@@ -19,10 +19,12 @@ public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<QslCard> cards = new ArrayList<QslCard>();
         QslCard c1 = new QslCard();
-        c1.setFrontImageUrl("img1");
+        c1.setFrontImageUrl("imgs/3DA0WW_1.JPG");
+        c1.setCallsign("3DA0WW");
         cards.add(c1);
         QslCard c2 = new QslCard();
-        c2.setFrontImageUrl("img2");
+        c2.setFrontImageUrl("imgs/5W0NU_1.JPG");
+        c2.setCallsign("5W0NU");
         cards.add(c2);
         req.setAttribute("cards", cards);
         req.getRequestDispatcher("cards.jsp").forward(req, resp);
