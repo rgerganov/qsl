@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class MainServlet extends HttpServlet {
+public class AdminServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     QslCardDao dao;
@@ -39,6 +39,7 @@ public class MainServlet extends HttpServlet {
         Page page = dao.getPage(query, pageNumber);
         req.setAttribute("page", page);
         req.setAttribute("currentPage", pageNumber);
-        req.getRequestDispatcher("/WEB-INF/showCards.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/listCards.jsp").forward(req, resp);
     }
+
 }

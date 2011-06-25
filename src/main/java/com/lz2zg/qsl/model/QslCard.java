@@ -4,13 +4,28 @@ import java.util.Date;
 
 public class QslCard {
 
-    String frontImageUrl;
-
-    String backImageUrl;
-
+    long id;
+    String prefix;
     String callsign;
-
+    String frontImageUrl;
+    String backImageUrl;
     Date date;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getPrefix() {
+        return prefix;
+    }
+
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+    }
 
     public String getFrontImageUrl() {
         return frontImageUrl;

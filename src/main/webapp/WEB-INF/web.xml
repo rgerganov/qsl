@@ -5,6 +5,10 @@
 
   <display-name>QSL</display-name>
 
+  <listener>
+    <listener-class>com.lz2zg.qsl.servlet.Initializer</listener-class>
+  </listener>  
+
   <servlet>
     <servlet-name>MainServlet</servlet-name>
     <servlet-class>com.lz2zg.qsl.servlet.MainServlet</servlet-class>
@@ -13,6 +17,36 @@
   <servlet-mapping>
     <servlet-name>MainServlet</servlet-name>
     <url-pattern>/main</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>com.lz2zg.qsl.servlet.AdminServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/admin</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>AddCardServlet</servlet-name>
+    <servlet-class>com.lz2zg.qsl.servlet.AddCardServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AddCardServlet</servlet-name>
+    <url-pattern>/admin/add</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>DeleteCardServlet</servlet-name>
+    <servlet-class>com.lz2zg.qsl.servlet.DeleteCardServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>DeleteCardServlet</servlet-name>
+    <url-pattern>/admin/delete</url-pattern>
   </servlet-mapping>
 
   <welcome-file-list>

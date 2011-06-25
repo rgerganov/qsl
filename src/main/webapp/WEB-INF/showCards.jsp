@@ -5,8 +5,11 @@
 <html>
   <head><title>QSL cards</title></head>
   <body>
-    <h3>Heading</h3>
-    <c:forEach items="${cards}" var="card">
+    <form action="/main" method="get">
+      <input type="text" name="q">
+      <input type="submit" value="Search">
+    </form>
+    <c:forEach items="${page.cards}" var="card">
       <img src="${card.frontImageUrl}" alt="${card.callsign}" width="415" height="265"/>
     </c:forEach>
   </body>

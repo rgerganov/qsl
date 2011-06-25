@@ -1,0 +1,84 @@
+package com.lz2zg.qsl.model;
+
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.FetchOptions;
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.Query;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public class QslCardDaoImpl implements QslCardDao {
+
+    public static final int PAGE_SIZE = 8;
+    public static final int NEXT_COUNT = 3;
+    public static final int PREV_COUNT = 4;
+    final DatastoreService datastore;
+
+    public QslCardDaoImpl(DatastoreService datastore) {
+        this.datastore = datastore;
+    }
+
+    @Override
+    public Page getPage(String query, int pageNumber) {
+        Key parentKey = KeyFactory.createKey("QSL", "LZ2ZG");
+        Query dsQuery = new Query(QslCard.class.getName(), parentKey);
+        if (query != null) {
+            dsQuery.addFilter("callsign", Query.FilterOperator.GREATER_THAN_OR_EQUAL, query);
+            dsQuery.addFilter("callsign", Query.FilterOperator.LESS_THAN, query + Character.MAX_VALUE);
+        }
+        int limit = NEXT_COUNT * PAGE_SIZE;
+        int offset = (pageNumber - 1) * PAGE_SIZE;
+        FetchOptions fetchOptions = FetchOptions.Builder.withLimit(limit).offset(offset);
+        List<Entity> entities = datastore.prepare(dsQuery).asList(fetchOptions);
+        Page result = new Page();
+        if (!entities.isEmpty()) {
+            int totalCount = entities.size();
+            int pageCount = Math.min(totalCount, PAGE_SIZE);
+            addEntitiesToPage(result, entities.subList(0, pageCount));
+            result.setStartPage(Math.max(1, pageNumber - PREV_COUNT));
+            int endPage = pageNumber + ((totalCount - 1) / PAGE_SIZE);
+            result.setEndPage(endPage);
+        }
+        return result;
+    }
+
+    void addEntitiesToPage(Page page, List<Entity> entities) {
+        List<QslCard> cards = new ArrayList<QslCard>();
+        for (Entity entity : entities) {
+            String callsign = (String) entity.getProperty("callsign");
+            String frontUrl = (String) entity.getProperty("frontImageUrl");
+            String backUrl = (String) entity.getProperty("backImageUrl");
+            Date date = (Date) entity.getProperty("date");
+            QslCard card = new QslCard();
+            card.setId(entity.getKey().getId());
+            card.setCallsign(callsign);
+            card.setFrontImageUrl(frontUrl);
+            card.setBackImageUrl(backUrl);
+            card.setDate(date);
+            cards.add(card);
+        }
+        page.setCards(cards);
+    }
+
+    @Override
+    public void add(QslCard qslCard) {
+        Key parentKey = KeyFactory.createKey("QSL", "LZ2ZG");
+        Entity entity = new Entity(QslCard.class.getName(), parentKey);
+        entity.setProperty("callsign", qslCard.getCallsign());
+        entity.setProperty("frontImageUrl", qslCard.getFrontImageUrl());
+        entity.setProperty("backImageUrl", qslCard.getBackImageUrl());
+        entity.setProperty("date", qslCard.getDate());
+        datastore.put(entity);
+    }
+
+    @Override
+    public void delete(long id) {
+        Key parentKey = KeyFactory.createKey("QSL", "LZ2ZG");
+        Key key = KeyFactory.createKey(parentKey, QslCard.class.getName(), id);
+        datastore.delete(key);
+    }
+}
