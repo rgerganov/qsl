@@ -1,6 +1,5 @@
 package com.lz2zg.qsl.model;
 
-import java.util.Date;
 
 public class QslCard {
 
@@ -8,7 +7,6 @@ public class QslCard {
     String callsign;
     String frontImageUrl;
     String backImageUrl;
-    Date date;
 
     public long getId() {
         return id;
@@ -40,13 +38,5 @@ public class QslCard {
 
     public void setCallsign(String callsign) {
         this.callsign = callsign;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 }

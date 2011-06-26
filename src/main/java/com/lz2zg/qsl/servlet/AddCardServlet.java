@@ -4,7 +4,6 @@ import com.lz2zg.qsl.model.QslCard;
 import com.lz2zg.qsl.model.QslCardDao;
 
 import java.io.IOException;
-import java.util.Date;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -32,16 +31,13 @@ public class AddCardServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String callsign = req.getParameter("callsign");
-        String frontImageUrl = req.getParameter("frontImageUrl");
-        String backImageUrl = req.getParameter("backImageUrl");
-        Date date = new Date(); // FIXME
-        QslCard qslCard = new QslCard();
-        qslCard.setCallsign(callsign);
-        qslCard.setFrontImageUrl(frontImageUrl);
-        qslCard.setBackImageUrl(backImageUrl);
-        qslCard.setDate(date);
-        dao.add(qslCard);
-        resp.sendRedirect("/admin");
+        try {
+            QslCard qslCard = ServletUtils.parseCard(req);
+            dao.add(qslCard);
+            resp.sendRedirect("/admin");
+        } catch (IllegalArgumentException e) {
+            req.setAttribute("errorMessage", e.getMessage());
+            req.getRequestDispatcher("/WEB-INF/addCard.jsp").forward(req, resp);
+        }
     }
 }

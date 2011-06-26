@@ -9,7 +9,6 @@ import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.Query;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class QslCardDaoImpl implements QslCardDao {
@@ -95,20 +94,17 @@ public class QslCardDaoImpl implements QslCardDao {
         entity.setProperty("callsign", qslCard.getCallsign());
         entity.setProperty("frontImageUrl", qslCard.getFrontImageUrl());
         entity.setProperty("backImageUrl", qslCard.getBackImageUrl());
-        entity.setProperty("date", qslCard.getDate());
     }
 
     QslCard entityToCard(Entity entity) {
         String callsign = (String) entity.getProperty("callsign");
         String frontUrl = (String) entity.getProperty("frontImageUrl");
         String backUrl = (String) entity.getProperty("backImageUrl");
-        Date date = (Date) entity.getProperty("date");
         QslCard card = new QslCard();
         card.setId(entity.getKey().getId());
         card.setCallsign(callsign);
         card.setFrontImageUrl(frontUrl);
         card.setBackImageUrl(backUrl);
-        card.setDate(date);
         return card;
     }
 }

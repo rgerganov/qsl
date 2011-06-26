@@ -6,8 +6,6 @@ import com.lz2zg.qsl.model.QslCard;
 import com.lz2zg.qsl.model.QslCardDao;
 import com.lz2zg.qsl.model.QslCardDaoImpl;
 
-import java.util.Date;
-
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -30,7 +28,6 @@ public class Initializer implements ServletContextListener {
             qslCard.setCallsign("LZ2ZG" + i);
             qslCard.setFrontImageUrl(urls[i % urls.length]);
             qslCard.setBackImageUrl(urls[i % urls.length]);
-            qslCard.setDate(new Date());
             dao.add(qslCard);
         }
     }
