@@ -2,6 +2,7 @@ package com.lz2zg.qsl.model;
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
@@ -49,16 +50,7 @@ public class QslCardDaoImpl implements QslCardDao {
     void addEntitiesToPage(Page page, List<Entity> entities) {
         List<QslCard> cards = new ArrayList<QslCard>();
         for (Entity entity : entities) {
-            String callsign = (String) entity.getProperty("callsign");
-            String frontUrl = (String) entity.getProperty("frontImageUrl");
-            String backUrl = (String) entity.getProperty("backImageUrl");
-            Date date = (Date) entity.getProperty("date");
-            QslCard card = new QslCard();
-            card.setId(entity.getKey().getId());
-            card.setCallsign(callsign);
-            card.setFrontImageUrl(frontUrl);
-            card.setBackImageUrl(backUrl);
-            card.setDate(date);
+            QslCard card = entityToCard(entity);
             cards.add(card);
         }
         page.setCards(cards);
@@ -68,10 +60,7 @@ public class QslCardDaoImpl implements QslCardDao {
     public void add(QslCard qslCard) {
         Key parentKey = KeyFactory.createKey("QSL", "LZ2ZG");
         Entity entity = new Entity(QslCard.class.getName(), parentKey);
-        entity.setProperty("callsign", qslCard.getCallsign());
-        entity.setProperty("frontImageUrl", qslCard.getFrontImageUrl());
-        entity.setProperty("backImageUrl", qslCard.getBackImageUrl());
-        entity.setProperty("date", qslCard.getDate());
+        fillEntity(entity, qslCard);
         datastore.put(entity);
     }
 
@@ -80,5 +69,46 @@ public class QslCardDaoImpl implements QslCardDao {
         Key parentKey = KeyFactory.createKey("QSL", "LZ2ZG");
         Key key = KeyFactory.createKey(parentKey, QslCard.class.getName(), id);
         datastore.delete(key);
+    }
+
+    @Override
+    public QslCard get(long id) {
+        Key parentKey = KeyFactory.createKey("QSL", "LZ2ZG");
+        Key key = KeyFactory.createKey(parentKey, QslCard.class.getName(), id);
+        try {
+            Entity entity = datastore.get(key);
+            return entityToCard(entity);
+        } catch (EntityNotFoundException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public void update(QslCard qslCard) {
+        Key parentKey = KeyFactory.createKey("QSL", "LZ2ZG");
+        Entity entity = new Entity(QslCard.class.getName(), qslCard.getId(), parentKey);
+        fillEntity(entity, qslCard);
+        datastore.put(entity);
+    }
+
+    void fillEntity(Entity entity, QslCard qslCard) {
+        entity.setProperty("callsign", qslCard.getCallsign());
+        entity.setProperty("frontImageUrl", qslCard.getFrontImageUrl());
+        entity.setProperty("backImageUrl", qslCard.getBackImageUrl());
+        entity.setProperty("date", qslCard.getDate());
+    }
+
+    QslCard entityToCard(Entity entity) {
+        String callsign = (String) entity.getProperty("callsign");
+        String frontUrl = (String) entity.getProperty("frontImageUrl");
+        String backUrl = (String) entity.getProperty("backImageUrl");
+        Date date = (Date) entity.getProperty("date");
+        QslCard card = new QslCard();
+        card.setId(entity.getKey().getId());
+        card.setCallsign(callsign);
+        card.setFrontImageUrl(frontUrl);
+        card.setBackImageUrl(backUrl);
+        card.setDate(date);
+        return card;
     }
 }

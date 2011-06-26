@@ -26,8 +26,12 @@ public class DeleteCardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String idParam = req.getParameter("id");
-        long id = Long.parseLong(idParam);
-        dao.delete(id);
+        try {
+            long id = Long.parseLong(idParam);
+            dao.delete(id);
+        } catch (NumberFormatException e) {
+            // ignore
+        }
         resp.sendRedirect("/admin");
     }
 }

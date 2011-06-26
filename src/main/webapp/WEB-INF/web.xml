@@ -49,6 +49,36 @@
     <url-pattern>/admin/delete</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>EditCardServlet</servlet-name>
+    <servlet-class>com.lz2zg.qsl.servlet.EditCardServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>EditCardServlet</servlet-name>
+    <url-pattern>/admin/edit</url-pattern>
+  </servlet-mapping>
+<!--
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>admin</web-resource-name>
+      <url-pattern>/admin/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+-->
+  <filter>
+    <filter-name>AuthenticationFilter</filter-name>
+    <filter-class>com.lz2zg.qsl.servlet.AuthenticationFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>AuthenticationFilter</filter-name>
+    <url-pattern>/admin/*</url-pattern>
+  </filter-mapping>
+  
   <welcome-file-list>
     <welcome-file>main</welcome-file>
   </welcome-file-list>

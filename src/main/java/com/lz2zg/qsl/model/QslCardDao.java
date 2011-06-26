@@ -6,6 +6,10 @@ public interface QslCardDao {
 
     void delete(long id);
 
+    QslCard get(long id);
+
+    void update(QslCard qslCard);
+
     Page getPage(String query, int pageNumber);
 
 }

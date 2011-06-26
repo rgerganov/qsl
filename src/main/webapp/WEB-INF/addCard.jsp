@@ -3,14 +3,16 @@
 <%@page session="false" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
-  <head><title>Add new card</title></head>
+  <head>
+    <title>Add new QSL card</title>
+  </head>
   <body>
-    <h3>Add new card</h3>
+    <h3>Add new QSL card</h3>
     <form action="/admin/add" method="post">
-      <input type="text" name="callsign">
-      <input type="text" name="frontImageUrl">
-      <input type="text" name="backImageUrl">
-      <input type="submit" value="Submit">
+      <p>Callsign: <input type="text" name="callsign"></p>
+      <p>Front Image URL: <input type="text" name="frontImageUrl"></p>
+      <p>Back Image URL: <input type="text" name="backImageUrl"></p>
+      <p><input type="submit" value="Add"></p>
     </form>
   </body>
 </html>

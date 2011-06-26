@@ -5,7 +5,6 @@ import java.util.Date;
 public class QslCard {
 
     long id;
-    String prefix;
     String callsign;
     String frontImageUrl;
     String backImageUrl;
@@ -17,14 +16,6 @@ public class QslCard {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getPrefix() {
-        return prefix;
-    }
-
-    public void setPrefix(String prefix) {
-        this.prefix = prefix;
     }
 
     public String getFrontImageUrl() {
