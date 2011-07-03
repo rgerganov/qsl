@@ -58,6 +58,17 @@
     <servlet-name>EditCardServlet</servlet-name>
     <url-pattern>/admin/edit</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>OAuth2CallbackServlet</servlet-name>
+    <servlet-class>com.lz2zg.qsl.servlet.OAuth2CallbackServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>OAuth2CallbackServlet</servlet-name>
+    <url-pattern>/admin/oauth2callback</url-pattern>
+  </servlet-mapping>
+  
 <!--
   <security-constraint>
     <web-resource-collection>
@@ -76,6 +87,16 @@
 
   <filter-mapping>
     <filter-name>AuthenticationFilter</filter-name>
+    <url-pattern>/admin/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>OAuth2Filter</filter-name>
+    <filter-class>com.lz2zg.qsl.servlet.OAuth2Filter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>OAuth2Filter</filter-name>
     <url-pattern>/admin/*</url-pattern>
   </filter-mapping>
   

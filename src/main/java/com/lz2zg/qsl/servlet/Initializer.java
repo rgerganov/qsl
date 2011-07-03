@@ -2,6 +2,8 @@ package com.lz2zg.qsl.servlet;
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.memcache.MemcacheService;
+import com.google.appengine.api.memcache.MemcacheServiceFactory;
 import com.lz2zg.qsl.model.QslCard;
 import com.lz2zg.qsl.model.QslCardDao;
 import com.lz2zg.qsl.model.QslCardDaoImpl;
@@ -18,6 +20,9 @@ public class Initializer implements ServletContextListener {
         QslCardDao dao = new QslCardDaoImpl(datastore);
         ServletContext context = sce.getServletContext();
         context.setAttribute("dao", dao);
+        MemcacheService memcacheService = MemcacheServiceFactory.getMemcacheService();
+        OAuth2ClientImpl oauth2client = new OAuth2ClientImpl(datastore, memcacheService);
+        context.setAttribute("oauth2client", oauth2client);
         //populateTestData(dao);
     }
 
