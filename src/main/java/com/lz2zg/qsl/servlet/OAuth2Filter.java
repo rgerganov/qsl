@@ -31,11 +31,6 @@ public class OAuth2Filter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
-        if (req.getRequestURL().toString().equals(OAuth2Client.REDIRECT_URI)) {
-            log.info("callback has been requested, pass forward");
-            chain.doFilter(request, response);
-            return;
-        }
         String accessToken = oauth2client.getAccessToken();
         if (accessToken != null) {
             log.info("accessToken has been found");

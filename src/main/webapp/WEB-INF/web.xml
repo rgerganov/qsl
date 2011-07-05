@@ -68,18 +68,17 @@
     <servlet-name>OAuth2CallbackServlet</servlet-name>
     <url-pattern>/admin/oauth2callback</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>UploadServlet</servlet-name>
+    <servlet-class>com.lz2zg.qsl.servlet.UploadServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>UploadServlet</servlet-name>
+    <url-pattern>/admin/upload</url-pattern>
+  </servlet-mapping>
   
-<!--
-  <security-constraint>
-    <web-resource-collection>
-      <web-resource-name>admin</web-resource-name>
-      <url-pattern>/admin/*</url-pattern>
-    </web-resource-collection>
-    <auth-constraint>
-      <role-name>admin</role-name>
-    </auth-constraint>
-  </security-constraint>
--->
   <filter>
     <filter-name>AuthenticationFilter</filter-name>
     <filter-class>com.lz2zg.qsl.servlet.AuthenticationFilter</filter-class>
@@ -97,7 +96,7 @@
 
   <filter-mapping>
     <filter-name>OAuth2Filter</filter-name>
-    <url-pattern>/admin/*</url-pattern>
+    <url-pattern>/admin/upload</url-pattern>
   </filter-mapping>
   
   <welcome-file-list>
