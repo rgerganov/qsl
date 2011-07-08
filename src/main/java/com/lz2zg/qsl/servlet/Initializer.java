@@ -27,7 +27,7 @@ public class Initializer implements ServletContextListener {
     }
 
     void populateTestData(QslCardDao dao) {
-        String[] urls = new String[] {"/imgs/3DA0WW_1.JPG", "/imgs/5W0NU_1.JPG"};
+        String[] urls = new String[] {"http://files.lz2zg.com/3DA0WW_1.JPG", "http://files.lz2zg.com/5W0NU_1.JPG"};
         for (int i = 0 ; i < 100 ; i++) {
             QslCard qslCard = new QslCard();
             qslCard.setCallsign("LZ2ZG" + i);

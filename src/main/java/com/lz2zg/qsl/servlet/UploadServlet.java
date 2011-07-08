@@ -18,7 +18,8 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 public class UploadServlet extends HttpServlet {
 
-    public static final String GS_BUCKET = "http://lz2zg.commondatastorage.googleapis.com/";
+    public static final String GS_BUCKET = "http://commondatastorage.googleapis.com/files.lz2zg.com/";
+    public static final String PUBLIC_URL = "http://files.lz2zg.com/";
 
     private static final long serialVersionUID = 1L;
 
@@ -47,7 +48,7 @@ public class UploadServlet extends HttpServlet {
                     upload(item, accessToken);
                     String fileName = item.getName();
                     resp.setContentType("text/html");
-                    resp.getWriter().println("Upload successful: " + GS_BUCKET + fileName);
+                    resp.getWriter().println("Upload successful: " + PUBLIC_URL + fileName);
                     return;
                 }
             }
