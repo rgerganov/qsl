@@ -1,0 +1,27 @@
+div.search {
+   margin:10px;
+}
+div.img {
+   margin:10px;
+   /* border:1px solid #0000ff; */
+   height:auto;
+   width:auto;
+   float:left;
+   text-align:center;
+}
+div.img img {
+   display:inline;
+   margin:3px;
+   border:1px solid #ffffff; /**/
+}
+
+div.img a:hover img {
+   border:1px solid #808080;
+}
+
+div.desc {
+   text-align:center;
+   font-weight:normal;
+   width:410px;
+   margin:2px;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>QSL cards</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/global.css" />
+	<link media="screen" rel="stylesheet" href="css/colorbox.css" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script type="text/javascript" src="colorbox/jquery.colorbox.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+            // select all links which have 'rel' attribute starting with 'card'
+			$("a[rel^='card']").colorbox();
+		});
+	</script>
+  </head>
+  <body>
+    <div class="search" align="center">
+      <form action="/main" method="get">
+        <input type="text" name="q" value=""/>
+        <input type="submit" value="Search"/>
+      </form>
+    </div>
+    <div class="img">
+      <a href="http://files.lz2zg.com/3DA0WW_1.JPG" rel="card1" title="3DA0WW-front">
+        <img src="http://files.lz2zg.com/3DA0WW_1.JPG" title="3DA0WW" alt="3DA0WW" width="415" height="265"/>
+      </a>
+      <a href="http://files.lz2zg.com/3DA0WW_2.JPG" rel="card1" title="3DA0WW-back" style="display:none">
+        <img src="http://files.lz2zg.com/3DA0WW_2.JPG" title="3DA0WW" alt="3DA0WW" width="415" height="265"/>
+      </a>
+      <div class="desc">3DA0WW</div>
+    </div>
+
+    <div class="img">
+      <a href="http://files.lz2zg.com/5W0NU_1.JPG" rel="card2" title="5W0NU-front">
+        <img src="http://files.lz2zg.com/5W0NU_1.JPG" title="5W0NU" alt="5W0NU" width="415" height="265"/>
+      </a>
+      <a href="http://files.lz2zg.com/5W0NU_2.JPG" rel="card2" title="5W0NU-back" style="display:none">
+        <img src="http://files.lz2zg.com/5W0NU_2.JPG" title="5W0NU" alt="5W0NU" width="415" height="265"/>
+      </a>
+      <div class="desc">5W0NU</div>
+    </div>
+
+    <div class="img">
+      <a href="http://files.lz2zg.com/A45WD_1.JPG" rel="card3" title="A45WD-front">
+        <img src="http://files.lz2zg.com/A45WD_1.JPG" title="A45WD" alt="A45WD" width="415" height="265"/>
+      </a>
+      <a href="http://files.lz2zg.com/A45WD_2.JPG" rel="card3" title="A45WD-back" style="display:none">
+        <img src="http://files.lz2zg.com/A45WD_2.JPG" title="A45WD" alt="A45WD" width="415" height="265"/>
+      </a>
+      <div class="desc">A45WD</div>
+    </div>
+
+    <div class="img">
+      <a href="http://files.lz2zg.com/K5D_1.JPG" rel="card4" title="K5D-front">
+        <img src="http://files.lz2zg.com/K5D_1.JPG" title="K5D" alt="K5D" width="415" height="265"/>
+      </a>
+      <a href="http://files.lz2zg.com/K5D_2.JPG" rel="card4" title="K5D-back" style="display:none">
+        <img src="http://files.lz2zg.com/K5D_2.JPG" title="K5D" alt="K5D" width="415" height="265"/>
+      </a>
+      <div class="desc">K5D</div>
+    </div>
+  </body>
+</html>
