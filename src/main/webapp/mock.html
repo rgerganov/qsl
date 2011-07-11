@@ -4,25 +4,25 @@
     <title>QSL cards</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="css/global.css" />
-	<link media="screen" rel="stylesheet" href="css/colorbox.css" />
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-	<script type="text/javascript" src="colorbox/jquery.colorbox.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-            // select all links which have 'rel' attribute starting with 'card'
-			$("a[rel^='card']").colorbox();
-            $(".frontLink").click(function(e) {
-              $(this).parents(".img").children(".front").css('display', 'block');
-              $(this).parents(".img").children(".back").css('display', 'none');
-              return false;
-            });
-            $(".backLink").click(function(e) {
-              $(this).parents(".img").children(".front").css('display', 'none');
-              $(this).parents(".img").children(".back").css('display', 'block');
-              return false;
-            });
-		});
-	</script>
+    <link media="screen" rel="stylesheet" href="css/colorbox.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <script type="text/javascript" src="colorbox/jquery.colorbox.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      // select all links which have 'rel' attribute starting with 'card'
+      $("a[rel^='card']").colorbox();
+      $(".frontLink").click(function(e) {
+        $(this).parents(".img").children(".front").css('display', 'block');
+        $(this).parents(".img").children(".back").css('display', 'none');
+        return false;
+      });
+      $(".backLink").click(function(e) {
+        $(this).parents(".img").children(".front").css('display', 'none');
+        $(this).parents(".img").children(".back").css('display', 'block');
+        return false;
+      });
+    });
+  </script>
   </head>
   <body>
     <div class="search" align="center">
@@ -31,54 +31,95 @@
         <input type="submit" value="Search"/>
       </form>
     </div>
-    <div align="center">
-        <div class="img">
-          <a href="http://files.lz2zg.com/3DA0WW_1.JPG" class="front" rel="card1" title="3DA0WW-front">
-            <img src="http://files.lz2zg.com/3DA0WW_1.JPG" title="3DA0WW" alt="3DA0WW" width="415" height="265"/>
-          </a>
-          <a href="http://files.lz2zg.com/3DA0WW_2.JPG" class="back" rel="card1" title="3DA0WW-back" style="display:none">
-            <img src="http://files.lz2zg.com/3DA0WW_2.JPG" title="3DA0WW" alt="3DA0WW" width="415" height="265"/>
-          </a>
-          <div class="desc">
-            <a class="frontLink" href="#">&larr;</a>
-            3DA0WW
-            <a class="backLink" href="#">&rarr;</a>
-          </div>
+    <div id="main">
+      <div class="img">
+        <a href="http://files.lz2zg.com/3DA0WW_1.JPG" class="front" rel="card1" title="3DA0WW-front">
+          <img src="http://files.lz2zg.com/3DA0WW_1.JPG" title="3DA0WW" alt="3DA0WW" width="415" height="265"/>
+        </a>
+        <a href="http://files.lz2zg.com/3DA0WW_2.JPG" class="back" rel="card1" title="3DA0WW-back">
+          <img src="http://files.lz2zg.com/3DA0WW_2.JPG" title="3DA0WW" alt="3DA0WW" width="415" height="265"/>
+        </a>
+        <div class="desc">
+          <a class="frontLink" href="#">&larr;</a>
+          <span class="callsign">3DA0WW</span>
+          <a class="backLink" href="#">&rarr;</a>
         </div>
+      </div>
 
-        <div class="img">
-          <a href="http://files.lz2zg.com/5W0NU_1.JPG" rel="card2" title="5W0NU-front">
-            <img src="http://files.lz2zg.com/5W0NU_1.JPG" title="5W0NU" alt="5W0NU" width="415" height="265"/>
-          </a>
-          <a href="http://files.lz2zg.com/5W0NU_2.JPG" rel="card2" title="5W0NU-back" style="display:none">
-            <img src="http://files.lz2zg.com/5W0NU_2.JPG" title="5W0NU" alt="5W0NU" width="415" height="265"/>
-          </a>
-          <div class="desc">
-            <a class="frontLink" href="#">&larr;</a>
-            5W0NU
-            <a class="backLink" href="#">&rarr;</a>
-          </div>
+      <div class="img">
+        <a href="http://files.lz2zg.com/5W0NU_1.JPG" class="front" rel="card2" title="5W0NU-front">
+          <img src="http://files.lz2zg.com/5W0NU_1.JPG" title="5W0NU" alt="5W0NU" width="415" height="265"/>
+        </a>
+        <a href="http://files.lz2zg.com/5W0NU_2.JPG" class="back" rel="card2" title="5W0NU-back">
+          <img src="http://files.lz2zg.com/5W0NU_2.JPG" title="5W0NU" alt="5W0NU" width="415" height="265"/>
+        </a>
+        <div class="desc">
+          <a class="frontLink" href="#">&larr;</a>
+          <span class="callsign">5W0NU</span>
+          <a class="backLink" href="#">&rarr;</a>
         </div>
+      </div>
 
-        <div class="img">
-          <a href="http://files.lz2zg.com/A45WD_1.JPG" rel="card3" title="A45WD-front">
-            <img src="http://files.lz2zg.com/A45WD_1.JPG" title="A45WD" alt="A45WD" width="415" height="265"/>
-          </a>
-          <a href="http://files.lz2zg.com/A45WD_2.JPG" rel="card3" title="A45WD-back" style="display:none">
-            <img src="http://files.lz2zg.com/A45WD_2.JPG" title="A45WD" alt="A45WD" width="415" height="265"/>
-          </a>
-          <div class="desc">A45WD</div>
+      <div class="img">
+        <a href="http://files.lz2zg.com/A45WD_1.JPG" class="front" rel="card3" title="A45WD-front">
+          <img src="http://files.lz2zg.com/A45WD_1.JPG" title="A45WD" alt="A45WD" width="415" height="265"/>
+        </a>
+        <a href="http://files.lz2zg.com/A45WD_2.JPG" class="back" rel="card3" title="A45WD-back">
+          <img src="http://files.lz2zg.com/A45WD_2.JPG" title="A45WD" alt="A45WD" width="415" height="265"/>
+        </a>
+        <div class="desc">
+          <a class="frontLink" href="#">&larr;</a>
+          <span class="callsign">A45WD</span>
+          <a class="backLink" href="#">&rarr;</a>
         </div>
+      </div>
 
-        <div class="img">
-          <a href="http://files.lz2zg.com/K5D_1.JPG" rel="card4" title="K5D-front">
-            <img src="http://files.lz2zg.com/K5D_1.JPG" title="K5D" alt="K5D" width="415" height="265"/>
-          </a>
-          <a href="http://files.lz2zg.com/K5D_2.JPG" rel="card4" title="K5D-back" style="display:none">
-            <img src="http://files.lz2zg.com/K5D_2.JPG" title="K5D" alt="K5D" width="415" height="265"/>
-          </a>
-          <div class="desc">K5D</div>
+      <div class="img">
+        <a href="http://files.lz2zg.com/K5D_1.JPG" class="front" rel="card4" title="K5D-front">
+          <img src="http://files.lz2zg.com/K5D_1.JPG" title="K5D" alt="K5D" width="415" height="265"/>
+        </a>
+        <a href="http://files.lz2zg.com/K5D_2.JPG" class="back" rel="card4" title="K5D-back">
+          <img src="http://files.lz2zg.com/K5D_2.JPG" title="K5D" alt="K5D" width="415" height="265"/>
+        </a>
+        <div class="desc">
+          <a class="frontLink" href="#">&larr;</a>
+          <span class="callsign">K5D</span>
+          <a class="backLink" href="#">&rarr;</a>
         </div>
+      </div>
+      
+      <div class="img">
+        <a href="http://files.lz2zg.com/A45WD_1.JPG" class="front" rel="card5" title="A45WD-front">
+          <img src="http://files.lz2zg.com/A45WD_1.JPG" title="A45WD" alt="A45WD" width="415" height="265"/>
+        </a>
+        <a href="http://files.lz2zg.com/A45WD_2.JPG" class="back" rel="card5" title="A45WD-back">
+          <img src="http://files.lz2zg.com/A45WD_2.JPG" title="A45WD" alt="A45WD" width="415" height="265"/>
+        </a>
+        <div class="desc">
+          <a class="frontLink" href="#">&larr;</a>
+          <span class="callsign">A45WD</span>
+          <a class="backLink" href="#">&rarr;</a>
+        </div>
+      </div>
+
+      <div class="img">
+        <a href="http://files.lz2zg.com/K5D_1.JPG" class="front" rel="card6" title="K5D-front">
+          <img src="http://files.lz2zg.com/K5D_1.JPG" title="K5D" alt="K5D" width="415" height="265"/>
+        </a>
+        <a href="http://files.lz2zg.com/K5D_2.JPG" class="back" rel="card6" title="K5D-back">
+          <img src="http://files.lz2zg.com/K5D_2.JPG" title="K5D" alt="K5D" width="415" height="265"/>
+        </a>
+        <div class="desc">
+          <a class="frontLink" href="#">&larr;</a>
+          <span class="callsign">K5D</span>
+          <a class="backLink" href="#">&rarr;</a>
+        </div>
+      </div>
+      
+      <div style="clear: both"></div>
+    </div>
+    <div id="footer" align="center">
+      <p class="copyright">Copyright © 2011 <a href="http://www.lz2zg.com">LZ2ZG</a>. All rights reserved.</p>
     </div>
   </body>
 </html>
