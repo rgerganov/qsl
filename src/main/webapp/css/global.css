@@ -1,5 +1,5 @@
-a:active, a:active * { outline: none !important; -moz-outline-style: none !important; }
-a:focus, a:focus * { outline: none !important; -moz-outline-style: none !important; }
+a:active, a:active * { outline: none !important; outline-style: none !important; }
+a:focus, a:focus * { outline: none !important; outline-style: none !important; }
 
 div.search {
   margin-top:20px;
@@ -52,18 +52,41 @@ div.desc span.callsign {
   font-weight:bold;
 }
 
-div.desc a:link {
+div.desc a {
   text-decoration:none;
 }
 
-div#main {
+div#main, div#paging {
   margin-left:auto;
   margin-right:auto;
   width:900px;
-  /* border:1px solid #808080; /**/
 }
 
-div#footer {
+div#paging ul {
+  list-style-type:none;
+  margin-left:0px;
+  margin-top:0px;
+  margin-bottom:10px;
+  padding-left:0px;
+}
+
+div#paging ul li {
+  display:inline;
+  margin-left:5px;
+  margin-right:5px;
+}
+
+div#paging ul a {
+  text-decoration:none;
+}
+
+div#paging ul a:hover {
+  text-decoration:underline;
+}
+
+div#footer p.copyright {
+  margin-top:0px;
+  margin-bottom:0px;
   font-size: 11px;
   color: #777777;
 }

@@ -9,15 +9,25 @@
     <title>QSL cards</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="css/global.css" />
-	<link media="screen" rel="stylesheet" href="css/colorbox.css" />
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-	<script type="text/javascript" src="colorbox/jquery.colorbox.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-            // select all links which have 'rel' attribute starting with 'card'
-			$("a[rel^='card']").colorbox();
-		});
-	</script>
+  <link media="screen" rel="stylesheet" href="css/colorbox.css" />
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+  <script type="text/javascript" src="colorbox/jquery.colorbox.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      // select all links which have 'rel' attribute starting with 'card'
+      $("a[rel^='card']").colorbox();
+      $(".frontLink").click(function(e) {
+        $(this).parents(".img").children(".front").css('display', 'block');
+        $(this).parents(".img").children(".back").css('display', 'none');
+        return false;
+      });
+      $(".backLink").click(function(e) {
+        $(this).parents(".img").children(".front").css('display', 'none');
+        $(this).parents(".img").children(".back").css('display', 'block');
+        return false;
+      });
+    });
+  </script>
   </head>
   <body>
     <div class="search" align="center">
@@ -28,22 +38,32 @@
     </div>
     <c:choose>
       <c:when test="${not empty page.cards}">
-	    <c:forEach items="${page.cards}" var="card">
+        <div id="main">
+        <c:forEach items="${page.cards}" var="card">
           <div class="img">
-            <a href="${card.frontImageUrl}" rel="card-${card.callsign}" title="${card.callsign}-front">
+            <a href="${card.frontImageUrl}" class="front" rel="card-${card.callsign}" title="${card.callsign}-front">
               <img src="${card.frontImageUrl}" title="${card.callsign}" alt="${card.callsign}" width="415" height="265"/>
             </a>
-            <a href="${card.backImageUrl}" rel="card-${card.callsign}" title="${card.callsign}-back" style="display:none">
+            <a href="${card.backImageUrl}" class="back" rel="card-${card.callsign}" title="${card.callsign}-back" style="display:none">
               <img src="${card.backImageUrl}" title="${card.callsign}" alt="${card.callsign}" width="415" height="265"/>
             </a>
-            <div class="desc">${card.callsign}</div>
+            <div class="desc">
+              <a class="frontLink" href="#">&larr;</a>
+              <span class="callsign">${card.callsign}</span>
+              <a class="backLink" href="#">&rarr;</a>
+            </div>
           </div>
-	    </c:forEach>
-	    <%@ include file="paging.jsp" %>
+        </c:forEach>
+        <div style="clear: both"></div>
+        </div>
+        <%@ include file="paging.jsp" %>
       </c:when>
       <c:otherwise>
-        <p>No QSL cards found</p>
+        <div id="main"><p>No QSL cards found</p></div>
       </c:otherwise>
-    </c:choose>    
+    </c:choose>
+    <div id="footer" align="center">
+      <p class="copyright">Copyright &copy; 2011 <a href="http://www.lz2zg.com">LZ2ZG</a>. All rights reserved.</p>
+    </div>
   </body>
 </html>
