@@ -1,34 +1,28 @@
-<%@page contentType="text/html;charset=UTF-8"%>
-<%@page pageEncoding="UTF-8"%>
-<%@page session="false" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title>Add new QSL card</title>
+    <title>Admin panel</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="../css/admin.css" />
   </head>
   <body>
     <div id="sidebar">
       <ul>
-        <li><a href="/admin">All cards</a></li>
-        <li><a href="/admin/add">Add new card</a></li>
-        <li><a href="/admin/upload">Upload file</a></li>
+        <li><a href="#">All cards</a></li>
+        <li><a href="#">Add new card</a></li>
+        <li><a href="#">Upload file</a></li>
         <li><a href="#">Logout</a></li>
       </ul>
     </div>
     <div id="main">
-      <c:if test="${not empty errorMessage}">
-        <p class="error"><c:out value="${errorMessage}"/></p>
-      </c:if>
+      <p class="error">Some error message</p>
       <form action="/admin/add" method="post">
         <label for="callsign" class="form-label">Callsign:</label>
-        <input type="text" id="callsign" name="callsign" class="form-input" value="${param.callsign}"/>
+        <input type="text" id="callsign" name="callsign" class="form-input" value="LZ2ZG"/>
         <label for="frontImageUrl" class="form-label">Front image URL:</label>
-        <input type="text" id="frontImageUrl" name="frontImageUrl" class="form-input" value="${param.frontImageUrl}"/>
+        <input type="text" id="frontImageUrl" name="frontImageUrl" class="form-input" value="http://files.lz2zg.com/LZ2ZG.jpg"/>
         <label for="backImageUrl" class="form-label">Back image URL:</label>
-        <input type="text" id="backImageUrl" name="backImageUrl" class="form-input" value="${param.backImageUrl}"/>
+        <input type="text" id="backImageUrl" name="backImageUrl" class="form-input" value="http://files.lz2zg.com/LZ2ZG.jpg"/>
         <input type="submit" name="submit" class="form-button" value="Add"/>
       </form>
     </div>

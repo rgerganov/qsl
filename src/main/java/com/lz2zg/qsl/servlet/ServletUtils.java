@@ -26,7 +26,7 @@ public class ServletUtils {
             throw new IllegalArgumentException("Back image is not an URL");
         }
         QslCard qslCard = new QslCard();
-        qslCard.setCallsign(callsign);
+        qslCard.setCallsign(callsign.toUpperCase());
         qslCard.setFrontImageUrl(frontImageUrl);
         qslCard.setBackImageUrl(backImageUrl);
         return qslCard;

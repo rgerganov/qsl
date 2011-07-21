@@ -1,11 +1,5 @@
 package com.lz2zg.qsl.servlet;
 
-import com.google.appengine.api.images.Image;
-import com.google.appengine.api.images.ImagesService;
-import com.google.appengine.api.images.ImagesService.OutputEncoding;
-import com.google.appengine.api.images.ImagesServiceFactory;
-import com.google.appengine.api.images.Transform;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -16,6 +10,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.appengine.api.images.Image;
+import com.google.appengine.api.images.ImagesService;
+import com.google.appengine.api.images.ImagesService.OutputEncoding;
+import com.google.appengine.api.images.ImagesServiceFactory;
+import com.google.appengine.api.images.Transform;
+import com.lz2zg.qsl.model.QslCard;
 
 import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.FileItemStream;
@@ -76,7 +77,7 @@ public class UploadServlet extends HttpServlet {
         Image image = ImagesServiceFactory.makeImage(imageData);
         Transform resize = ImagesServiceFactory.makeResize(THUMB_W, THUMB_H);
         Image thumb = imagesService.applyTransform(resize, image, OutputEncoding.JPEG);
-        String thumbName = getThumbName(fileName);
+        String thumbName = QslCard.getThumbName(fileName);
         upload(thumbName, thumb.getImageData(), item.getContentType(), accessToken);
     }
 
@@ -96,15 +97,6 @@ public class UploadServlet extends HttpServlet {
         int respCode = conn.getResponseCode();
         if (respCode != 200) {
             throw new IOException("Unexpected response code: " + respCode);
-        }
-    }
-
-    String getThumbName(String name) {
-        int dotIndex = name.lastIndexOf(".");
-        if (dotIndex >=0 ) {
-            return name.substring(0, dotIndex) + "-thumb" + name.substring(dotIndex);
-        } else {
-            return name + "-thumb";
         }
     }
 }

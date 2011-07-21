@@ -9,7 +9,7 @@ public interface OAuth2Client {
     // so it safe to be hardcoded as a constant
     String CLIENT_SECRET = "11DrV8S8kCglvYrxlG5Gt61Y";
 
-    String REDIRECT_URI = "http://localhost:8080/admin/oauth2callback";
+    String REDIRECT_URI = "http://qsl.lz2zg.com/admin/oauth2callback";
 
     String getAccessToken();
 

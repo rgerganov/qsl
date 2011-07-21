@@ -42,10 +42,10 @@
         <c:forEach items="${page.cards}" var="card">
           <div class="img">
             <a href="${card.frontImageUrl}" class="front" rel="card-${card.callsign}" title="${card.callsign}-front">
-              <img src="${card.frontImageUrl}" title="${card.callsign}" alt="${card.callsign}" width="415" height="265"/>
+              <img src="${card.frontThumbUrl}" title="${card.callsign}" alt="${card.callsign}" width="415" height="265"/>
             </a>
             <a href="${card.backImageUrl}" class="back" rel="card-${card.callsign}" title="${card.callsign}-back" style="display:none">
-              <img src="${card.backImageUrl}" title="${card.callsign}" alt="${card.callsign}" width="415" height="265"/>
+              <img src="${card.backThumbUrl}" title="${card.callsign}" alt="${card.callsign}" width="415" height="265"/>
             </a>
             <div class="desc">
               <a class="frontLink" href="#">&larr;</a>

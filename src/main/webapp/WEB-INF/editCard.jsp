@@ -2,24 +2,36 @@
 <%@page pageEncoding="UTF-8"%>
 <%@page session="false" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>Edit QSL card</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../css/admin.css" />
   </head>
   <body>
-    <h3>Edit QSL card</h3>
-    <c:if test="${not empty errorMessage}">
-      <div><c:out value="${errorMessage}"/></div>
-    </c:if>    
-    <form action="/admin/edit" method="post">
-      <input type="hidden" name="id" value="${card.id}">
-      <p>Callsign: <input type="text" name="callsign" value="${card.callsign}"></p>
-      <p>Front Image URL: <input type="text" name="frontImageUrl" value="${card.frontImageUrl}"></p>
-      <p>Back Image URL: <input type="text" name="backImageUrl" value="${card.backImageUrl}"></p>
-      <p>
-        <input type="submit" value="Update">
-        <a href="/admin"><input type="button" name="cancel" value="Cancel"/></a>
-      </p>
-    </form>
+    <div id="sidebar">
+      <ul>
+        <li><a href="/admin">All cards</a></li>
+        <li><a href="/admin/add">Add new card</a></li>
+        <li><a href="/admin/upload">Upload file</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+    </div>
+    <div id="main">
+      <c:if test="${not empty errorMessage}">
+        <p class="error"><c:out value="${errorMessage}"/></p>
+      </c:if>
+      <form action="/admin/edit" method="post">
+        <input type="hidden" name="id" value="${card.id}">
+        <label for="callsign" class="form-label">Callsign:</label>
+        <input type="text" id="callsign" name="callsign" class="form-input" value="${card.callsign}"/>
+        <label for="frontImageUrl" class="form-label">Front image URL:</label>
+        <input type="text" id="frontImageUrl" name="frontImageUrl" class="form-input" value="${card.frontImageUrl}"/>
+        <label for="backImageUrl" class="form-label">Back image URL:</label>
+        <input type="text" id="backImageUrl" name="backImageUrl" class="form-input" value="${card.backImageUrl}"/>
+        <input type="submit" name="submit" class="form-button" value="Update"/>
+      </form>
+    </div>
   </body>
 </html>

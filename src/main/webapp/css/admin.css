@@ -1,0 +1,69 @@
+div#main {
+  width:900px;
+  float: left;
+}
+
+div#sidebar {
+  width: 100px;
+  float: left;
+}
+
+div#sidebar ul {
+  display:inline;
+  padding-left:10px;
+  list-style-type:none;
+  margin:0px 5px 0px 5px;
+  padding:0;
+}
+
+div#sidebar ul li {
+  padding: 5px 0px;
+}
+
+div#sidebar ul li a {
+  text-decoration:none;
+}
+
+div#sidebar ul li a:hover {
+  text-decoration:underline;
+}
+
+.form-label {
+  float:left;
+  display:block;
+  width:200px;
+  text-align:right;
+  margin-right:5px;
+  margin-bottom:10px;
+}
+
+.form-input {
+  margin-bottom:10px;
+  display:block;
+  border:#a9a9a9 1px solid;
+  width:200px;
+}
+
+.form-button {
+  margin-left:205px;
+}
+
+input[type="submit"]
+{
+  border:#a9a9a9 2px solid;
+  padding:5px;
+}
+
+input[type="file"]
+{
+  border:#a9a9a9 1px solid;
+  padding:5px;
+  width:300px;
+}
+
+p.error {
+  color: red;
+  width: 200px;
+  text-align: right;
+  margin-top: 0px;
+}
