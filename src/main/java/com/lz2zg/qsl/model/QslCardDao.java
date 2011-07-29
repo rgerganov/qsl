@@ -10,6 +10,6 @@ public interface QslCardDao {
 
     void update(QslCard qslCard);
 
-    Page getPage(String query, int pageNumber);
+    Page getPage(String query, int pageSize, int pageNumber);
 
 }

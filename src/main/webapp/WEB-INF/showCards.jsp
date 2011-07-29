@@ -17,11 +17,15 @@
       // select all links which have 'rel' attribute starting with 'card'
       $("a[rel^='card']").colorbox();
       $(".frontLink").click(function(e) {
+        $(this).siblings(".backLink").css('visibility', 'visible');
+        $(this).css('visibility', 'hidden');
         $(this).parents(".img").children(".front").css('display', 'block');
         $(this).parents(".img").children(".back").css('display', 'none');
         return false;
       });
       $(".backLink").click(function(e) {
+        $(this).siblings(".frontLink").css('visibility', 'visible');
+        $(this).css('visibility', 'hidden');
         $(this).parents(".img").children(".front").css('display', 'none');
         $(this).parents(".img").children(".back").css('display', 'block');
         return false;

@@ -6,6 +6,19 @@ import javax.servlet.http.HttpServletRequest;
 
 public class ServletUtils {
 
+    public static int parsePageNumber(HttpServletRequest req) {
+        String pageNumberParam = req.getParameter("p");
+        int pageNumber = 1;
+        try {
+            pageNumber = Integer.parseInt(pageNumberParam);
+            if (pageNumber <= 0) {
+                pageNumber = 1;
+            }
+        } catch (NumberFormatException e) {
+        }
+        return pageNumber;
+    }
+    
     public static QslCard parseCard(HttpServletRequest req) throws IllegalArgumentException {
         String callsign = req.getParameter("callsign");
         if (isEmpty(callsign)) {

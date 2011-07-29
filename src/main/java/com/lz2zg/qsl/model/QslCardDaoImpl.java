@@ -13,7 +13,6 @@ import java.util.List;
 
 public class QslCardDaoImpl implements QslCardDao {
 
-    public static final int PAGE_SIZE = 8;
     public static final int NEXT_COUNT = 3;
     public static final int PREV_COUNT = 4;
     final DatastoreService datastore;
@@ -23,24 +22,25 @@ public class QslCardDaoImpl implements QslCardDao {
     }
 
     @Override
-    public Page getPage(String query, int pageNumber) {
+    public Page getPage(String query, int pageSize, int pageNumber) {
         Key parentKey = KeyFactory.createKey("QSL", "LZ2ZG");
         Query dsQuery = new Query(QslCard.class.getName(), parentKey);
         if (query != null) {
+            query = query.toUpperCase();
             dsQuery.addFilter("callsign", Query.FilterOperator.GREATER_THAN_OR_EQUAL, query);
             dsQuery.addFilter("callsign", Query.FilterOperator.LESS_THAN, query + Character.MAX_VALUE);
         }
-        int limit = NEXT_COUNT * PAGE_SIZE;
-        int offset = (pageNumber - 1) * PAGE_SIZE;
+        int limit = NEXT_COUNT * pageSize;
+        int offset = (pageNumber - 1) * pageSize;
         FetchOptions fetchOptions = FetchOptions.Builder.withLimit(limit).offset(offset);
         List<Entity> entities = datastore.prepare(dsQuery).asList(fetchOptions);
         Page result = new Page();
         if (!entities.isEmpty()) {
             int totalCount = entities.size();
-            int pageCount = Math.min(totalCount, PAGE_SIZE);
+            int pageCount = Math.min(totalCount, pageSize);
             addEntitiesToPage(result, entities.subList(0, pageCount));
             result.setStartPage(Math.max(1, pageNumber - PREV_COUNT));
-            int endPage = pageNumber + ((totalCount - 1) / PAGE_SIZE);
+            int endPage = pageNumber + ((totalCount - 1) / pageSize);
             result.setEndPage(endPage);
         }
         return result;

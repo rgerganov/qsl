@@ -1,3 +1,5 @@
+@import "paging.css";
+
 a:active, a:active * { outline: none !important; outline-style: none !important; }
 a:focus, a:focus * { outline: none !important; outline-style: none !important; }
 
@@ -46,6 +48,10 @@ div.desc {
   margin:2px;
 }
 
+div.desc a.frontLink {
+  visibility:hidden;
+}
+
 div.desc span.callsign {
   letter-spacing:1px;
   font-family:Times New Roman;
@@ -56,32 +62,10 @@ div.desc a {
   text-decoration:none;
 }
 
-div#main, div#paging {
+div#main {
   margin-left:auto;
   margin-right:auto;
   width:900px;
-}
-
-div#paging ul {
-  list-style-type:none;
-  margin-left:0px;
-  margin-top:0px;
-  margin-bottom:10px;
-  padding-left:0px;
-}
-
-div#paging ul li {
-  display:inline;
-  margin-left:5px;
-  margin-right:5px;
-}
-
-div#paging ul a {
-  text-decoration:none;
-}
-
-div#paging ul a:hover {
-  text-decoration:underline;
 }
 
 div#footer p.copyright {

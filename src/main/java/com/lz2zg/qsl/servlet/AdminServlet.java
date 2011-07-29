@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AdminServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
+    private static final int PAGE_SIZE = 20;
     QslCardDao dao;
 
     @Override
@@ -26,20 +27,11 @@ public class AdminServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String pageNumberParam = req.getParameter("p");
-        int pageNumber = 1;
-        try {
-            pageNumber = Integer.parseInt(pageNumberParam);
-            if (pageNumber <= 0) {
-                pageNumber = 1;
-            }
-        } catch (NumberFormatException e) {
-        }
+        int pageNumber = ServletUtils.parsePageNumber(req);
         String query = req.getParameter("q");
-        Page page = dao.getPage(query, pageNumber);
+        Page page = dao.getPage(query, PAGE_SIZE, pageNumber);
         req.setAttribute("page", page);
         req.setAttribute("currentPage", pageNumber);
         req.getRequestDispatcher("/WEB-INF/listCards.jsp").forward(req, resp);
     }
-
 }
