@@ -1,0 +1,7 @@
+Web application for managing a simple gallery of "QSL":http://en.wikipedia.org/wiki/QSL cards. The following technologies are used:
+ * Java servlets and JSPs
+ * Google App Engine and its services (Users Service, Image Service, Datastore)
+ * Google Storage for Developers
+ * OAuth2 for authorization
+
+The application is running at "http://qsl.lz2zg.com":http://qsl.lz2zg.com and contains part of my father's (LZ2ZG) QSL cards.
