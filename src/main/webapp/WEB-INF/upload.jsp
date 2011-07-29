@@ -10,14 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../css/admin.css" />
   </head>
   <body>
-    <div id="sidebar">
-      <ul>
-        <li><a href="/admin">All cards</a></li>
-        <li><a href="/admin/add">Add new card</a></li>
-        <li><a href="/admin/upload">Upload file</a></li>
-        <li><a href="#">Logout</a></li>
-      </ul>
-    </div>
+    <%@ include file="sidebar.jsp" %>
     <div id="main">
       <c:if test="${not empty errorMessage}">
           <p class="error"><c:out value="${errorMessage}"/></p>
